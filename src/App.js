@@ -4,6 +4,7 @@ import {
     Route,
 }   from "react-router-dom";
 import Home from"./routes/Home";
+import Detail from "./routes/Detail";
 
 // App.js에 있던 내용들 -> Home.js로 
 // => App.js는 router를 render하게 된다.
@@ -17,7 +18,9 @@ function App() {
             <Switch>
             {/* -Route : URL의미
                 -Switch : Route(URL)를 찾고, Route를 찾으면,component를 렌더링 */}
-                <Route path="./moive">
+                <Route path="/moive/:id">
+                            {/* Movie component에 id도 필요
+                                -> 그 위 부모인 Home 에서 movie의 id 렌더링 필요 */}
                     <Detail />
                 </Route>
                 <Route path="/"> {/* "/" means home  */}

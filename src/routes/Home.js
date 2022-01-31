@@ -2,7 +2,7 @@
 // Home route는 App component 전체를 가짐 
 
 import { useState, useEffect } from "react";
-import Movie from "./components/Movie";
+import Movie from "./Movie";
 
 function Home() {
     // App.js에 있던 모든 내용 
@@ -56,7 +56,9 @@ function Home() {
             ) : (
                 <div>
                     {movies.map((movie) => (
-                      <Movie 
+                      <Movie // Movie가 prop으로 받는 요소들을 의미함 
+                        key={movie.id}
+                        id={movie.id}
                         coverImg={movie.medium_cover_image}  
                        // coverImg는 임의 name, {}는 API에서 가져오므로 변경X
                         title={movie.title}
