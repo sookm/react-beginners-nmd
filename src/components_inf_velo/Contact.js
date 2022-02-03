@@ -13,10 +13,10 @@ export default class Contact extends React.Component {
             keyword: '',
             //contactData 라는 state생성, 배열로 받음. 이 내부에 데이터 객체가 들어있음
             contactData: [
-            {name:'Abet', phone:'010-0000-0001'},
-            {name:'Betty', phone:'010-0000-0002'},
-            {name:'Charlie', phone:'010-0000-0003'},
-            {name:'David', phone:'010-0000-0004'}
+            {id:'5', name:'Abet', phone:'010-0000-0001'},
+            {id:'1', name:'Betty', phone:'010-0000-0002'},
+            {id:'4', name:'Charlie', phone:'010-0000-0003'},
+            {id:'2', name:'David', phone:'010-0000-0004'}
             ]
       }
     }
@@ -35,6 +35,20 @@ export default class Contact extends React.Component {
 
             //search를 위한 배열을 정리하기 위한 mapToComponent 수정
 
+        // stackoverflow ver : sort는 됨 
+        function sortByIdThenName(a, b) {
+            const n = a.id - b.id;
+            // sort by listId
+            if (n !== 0) {
+                return n;
+            }
+            // if listId is equal then sort by name
+            return a.name.localeCompare(b.name);
+            }
+            const sorted = data.sort(sortByIdThenName);
+
+            console.log(sorted);
+
             // 오름차순 정렬 -> 파라미터 생략 가능
             /*data.sort((a,b) =>  { 
                 var textA = a.name.toUpperCase();
@@ -43,7 +57,7 @@ export default class Contact extends React.Component {
                }); */
                  // 알파벳 순서로 정렬
         // filter함수 생성 
-            /*data = data.filter(
+            /* data = data.filter(
                 (contact) => { //contact를 파라미터로 받는 함수 생성 
                     // 이름에 search에 내용 가질때만 true 반환하도록. 
                     return contact.name.toLowerCase().indexOF(this.state.keyword.toLowerCase()) > -1; 
@@ -51,7 +65,7 @@ export default class Contact extends React.Component {
                     // 소문자도 반영하도록 toLowerCase
                     
                 }
-            );*/
+            ); */
 
             //새로운 배열 생성하여 리턴하도록
             //위에서 받은 data 배열을 contact로 받아들임. 그 데이터의 인덱스는 i
